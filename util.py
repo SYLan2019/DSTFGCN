@@ -1,22 +1,11 @@
-import pickle
 import numpy as np
 import os
-import scipy.sparse as sp
 import torch
-from scipy.sparse import linalg
-
 
 class DataLoader(object):
     def __init__(self, xs, ys, batch_size, datetime, pad_with_last_sample=True):
-        """
-        :param xs:
-        :param ys:
-        :param batch_size:
-        :param pad_with_last_sample: pad with the last sample to make number of samples divisible to batch_size.
-        """
         self.batch_size = batch_size
         self.current_ind = 0
-
         if pad_with_last_sample:
             num_padding = (batch_size - (len(xs) % batch_size)) % batch_size
             x_padding = np.repeat(xs[-1:], num_padding, axis=0)
@@ -57,7 +46,6 @@ class StandardScaler():
     """
     Standard the input
     """
-
     def __init__(self, mean, std):
         self.mean = mean
         self.std = std
@@ -83,15 +71,8 @@ def load_dataset(dataset_dir, N_t, batch_size, valid_batch_size= None, test_batc
     test_size = data['x_test'].shape[0]
     datetime = np.arange(train_size + val_size + test_size)
     data['train_loader'] = DataLoader(data['x_train'], data['y_train'], batch_size, datetime[:train_size] % N_t)
-    if 'METR-LA' in dataset_dir:
-        print("use METR-LA dataloader")
-        data['val_loader'] = DataLoader(data['x_val'], data['y_val'], valid_batch_size,
-                                        (datetime[train_size:train_size + val_size]) % N_t)
-        data['test_loader'] = DataLoader(data['x_test'], data['y_test'], test_batch_size,
-                                         (datetime[train_size + val_size:]) % N_t)
-    else:
-        data['val_loader'] = DataLoader(data['x_val'], data['y_val'], valid_batch_size, (datetime[train_size:train_size+val_size] + 23) % N_t)
-        data['test_loader'] = DataLoader(data['x_test'], data['y_test'], test_batch_size, (datetime[train_size+val_size:] + 46) % N_t)
+    data['val_loader'] = DataLoader(data['x_val'], data['y_val'], valid_batch_size, (datetime[train_size:train_size+val_size] + 23) % N_t)
+    data['test_loader'] = DataLoader(data['x_test'], data['y_test'], test_batch_size, (datetime[train_size+val_size:] + 46) % N_t)
     data['scaler'] = scaler
     return data
 
@@ -151,7 +132,6 @@ def masked_mape(preds, labels, null_val=np.nan):
     loss = loss * mask
     loss = torch.where(torch.isnan(loss), torch.zeros_like(loss), loss)
     return torch.mean(loss)
-
 
 def metric(pred, real):
     mae = masked_mae(pred,real,0.0).item()

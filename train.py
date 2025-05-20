@@ -140,7 +140,6 @@ def main():
     logger.info("Training finished")
     log = 'The valid loss on best model is {:.4f}'
     logger.info(log.format(his_loss[bestid]))
-
     amae = []
     amape = []
     armse = []

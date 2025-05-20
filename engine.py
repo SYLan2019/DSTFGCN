@@ -5,7 +5,7 @@ import util
 criterion = nn.SmoothL1Loss()
 class trainer():
     def __init__(self, config, scaler, adjacency_matrix, device):
-        self.model = DSTFGCN(device, config, adjacency_matrix, config['hidden_dimension'] * 10)
+        self.model = DSTFGCN(device, config, adjacency_matrix, config['hidden_dimension'] * 8)
         self.model.to(device)
         self.optimizer = optim.Adam(self.model.parameters(), lr = config['learning_rate'], weight_decay = config['weight_decay'])
         self.scheduler = torch.optim.lr_scheduler.MultiStepLR(self.optimizer,

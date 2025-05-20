@@ -7,10 +7,10 @@ class ST_block(nn.Module):
                                            embed_dim, adj, device)
         self.temporal_block = temporal_block(drop, num_nodes, num_steps, N_t, device, temporal_dim, hid_dim)
 
-        self.lineur = torch.nn.Conv2d(hid_dim, hid_dim, kernel_size=(1, 1), padding=(0, 0), stride=(1, 1), bias=True)
+        self.linear = torch.nn.Conv2d(hid_dim, hid_dim, kernel_size=(1, 1), padding=(0, 0), stride=(1, 1), bias=True)
 
     def forward(self, x, t):
-        x_f = self.lineur(x)
+        x_f = self.linear(x)
         x_s = self.spatial_block(x)
         x_t = self.temporal_block(x, t)
         x = torch.cat([x_f, x_s, x_t], dim=1)

@@ -43,9 +43,6 @@ class DataLoader(object):
         return _wrapper()
 
 class StandardScaler():
-    """
-    Standard the input
-    """
     def __init__(self, mean, std):
         self.mean = mean
         self.std = std
@@ -63,7 +60,6 @@ def load_dataset(dataset_dir, N_t, batch_size, valid_batch_size= None, test_batc
         data['x_' + category] = cat_data['x']
         data['y_' + category] = cat_data['y']
     scaler = StandardScaler(mean=data['x_train'][..., 0].mean(), std=data['x_train'][..., 0].std())
-    # Data format
     for category in ['train', 'val', 'test']:
         data['x_' + category][..., 0] = scaler.transform(data['x_' + category][..., 0])
     train_size = data['x_train'].shape[0]

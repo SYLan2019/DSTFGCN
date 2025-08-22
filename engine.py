@@ -1,8 +1,8 @@
 import torch.optim as optim
 from model.DSTFGCN import *
 import util
-
 criterion = nn.SmoothL1Loss()
+
 class trainer():
     def __init__(self, config, scaler, adjacency_matrix, device):
         self.model = DSTFGCN(device, config, adjacency_matrix, config['hidden_dimension'] * 8)

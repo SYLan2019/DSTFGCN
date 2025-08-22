@@ -34,11 +34,11 @@ class DSTFGCN(nn.Module):
         for layers in range(self.layers):
             self.layer_ST_block.append(ST_block(self.drop, config['num_nodes'], 12, config['embedding_dimension'],
                                  config['N_t'], self.adj, config['temporal_dim'], self.hid_dim, device))
-            self.residual_convs.append(nn.Conv1d(in_channels=self.hid_dim,
+            self.residual_convs.append(nn.Conv2d(in_channels=self.hid_dim,
                                                  out_channels=self.hid_dim,
                                                  kernel_size=(1, 1)))
 
-            self.skip_convs.append(nn.Conv1d(in_channels=self.hid_dim,
+            self.skip_convs.append(nn.Conv2d(in_channels=self.hid_dim,
                                              out_channels=skip_channels,
                                              kernel_size=(1, 1)))
             self.bn.append(nn.BatchNorm2d(self.hid_dim))

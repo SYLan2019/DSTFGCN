@@ -9,7 +9,7 @@ class Tcn(nn.Module):
         self.filter_convs = nn.ModuleList()
         self.gate_convs = nn.ModuleList()
         self.filter_convs=torch.nn.Conv2d(c_in, c_out, kernel_size=(1, 2), padding=(0, 0), stride=(1, 1), bias=True)
-        self.gate_convs=torch.nn.Conv1d(c_in, c_out, kernel_size=(1, 2), padding=(0, 0), stride=(1, 1), bias=True)
+        self.gate_convs=torch.nn.Conv2d(c_in, c_out, kernel_size=(1, 2), padding=(0, 0), stride=(1, 1), bias=True)
 
     def forward(self,x):
         x = nn.functional.pad(x, (1, 0, 0, 0))

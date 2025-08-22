@@ -3,6 +3,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 from math import sqrt
 
+
 class Dif_cov(nn.Module):
     def __init__(self, adj, device):
         super(Dif_cov, self).__init__()

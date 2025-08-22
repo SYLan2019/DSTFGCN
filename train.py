@@ -21,7 +21,7 @@ def load_dataset_config(config_path):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--config_path', type=str, default='config/PeMS08.json', help='config_file')
+    parser.add_argument('--config_path', type=str, default='config/PeMS03.json', help='config_file')
     parser.add_argument('--device', type=str, default='cuda:0', help='gpu')
     args = parser.parse_args()
     config_path = args.config_path
@@ -30,7 +30,7 @@ def main():
     logger = logging.getLogger(__name__)
     logger.setLevel(logging.DEBUG)
     Path("log/").mkdir(parents=True, exist_ok=True)
-    fh = logging.FileHandler(f"log/{str(time.time())}_restore_{'STDGCN'}.log")
+    fh = logging.FileHandler(f"log/{str(time.time())}_restore_{'DSTFGCN'}.log")
     fh.setLevel(logging.DEBUG)
     ch = logging.StreamHandler()
     ch.setLevel(logging.WARN)

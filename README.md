@@ -23,10 +23,10 @@ Step 3: Run pre\_process\_data.py to obtain input for the model.
 ## Train command
 
 ```bash
-python train.py --config\_path='config/PeMS08.json' --device='cuda:0'
+python train.py --config_path='config/PeMS08.json' --device='cuda:0'
 ```
 
-<button class="copy-btn" onclick="navigator.clipboard.writeText('python train.py --config\_path=\\\\'config/PeMS08.json\\\\' --device=\\\\'cuda:0\\\\'')"></button>
+<button class="copy-btn" onclick="navigator.clipboard.writeText('python train.py --config_path=\\\\'config/PeMS08.json\\\\' --device=\\\\'cuda:0\\\\'')"></button>
 
 Training other datasets only requires modifying the corresponding variables.
 

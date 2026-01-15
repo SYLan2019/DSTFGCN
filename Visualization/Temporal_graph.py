@@ -1,20 +1,17 @@
-import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
-import pickle
-import matplotlib.gridspec as gridspec
-# 设置中文字体和负号显示
+
 plt.rcParams['font.sans-serif'] = ['SimHei']
 plt.rcParams['axes.unicode_minus'] = False
 data = np.load('data/Node-independent_temporal_graph.npy')
-i = 22
+i = 50
 fig, axes = plt.subplots(1, 4, figsize=(12, 4))
 cmap = plt.get_cmap('YlOrRd')
 titles = ['The heatmap of temporal \ngraph at 8:00',
           'The heatmap of temporal \ngraph at 12:00',
           'The heatmap of temporal \ngraph at 16:00',
           'The heatmap of temporal \ngraph at 20:00']
-for ax, data, title in zip(axes, [data[i], data[i], data[i], data[i]], titles):
+for ax, data, title in zip(axes, [data[0,i], data[1,i], data[2,i], data[3,i]], titles):
     im = ax.imshow(data, cmap=cmap)
     ax.set_xticks(np.arange(0, 13, 2))
     ax.set_yticks(np.arange(0, 13, 2))

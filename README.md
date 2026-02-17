@@ -9,8 +9,8 @@ This repository contains the implementation of DSTFGCN, a deep learning model fo
 To run this code, please ensure you have the following dependencies installed:
 
 * Python 3.9.7
-* Torch 2.0.1
-* NumPy 1.24.0
+* Torch 1.10.2
+* NumPy 1.23.5
 
 ## Dataset
 

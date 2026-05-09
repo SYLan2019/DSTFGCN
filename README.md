@@ -30,6 +30,20 @@ python train.py --config_path='config/PeMS08.json' --device='cuda:0'
 
 Training other datasets only requires modifying the corresponding variables.
 
+## Cite
+
+If you use this repository or would like to refer the paper, please use the following BibTeX entry
+```
+@article{DSTFGCN,
+author = {Tianyi Pan and Xinyuan Zhou and Shiyong Lan and Wenwu Wang and Hongyu Yang and Zheng Li and Zhiang Hou and Yao Ren},
+title = {DSTFGCN: A dynamic spatial-temporal fusion graph convolution network for traffic flow forecasting},
+journal = {Neural Networks},
+volume = {201},
+pages = {108989},
+year = {2026},
+issn = {0893-6080},
+doi = {https://doi.org/10.1016/j.neunet.2026.108989}}
+```
 
 
 ## 
